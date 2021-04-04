@@ -13,8 +13,7 @@
   <div fxShow="false"
       fxShow.gt-xs="true"
        fxShow.gt-sm="false"
-    class="header-slogan"
-    fxLayoutAlign="center center">
+       fxLayoutAlign="center center">
     HD movies at the smallest file size.
   </div>
 
@@ -26,23 +25,23 @@
         fxLayoutAlign="center center"
         fxLayoutGap="4px"
         style="padding-right: 4px">
-    <a href="#" style="color: #e3e3e3">
+    <a href="#" class="cursor-pointer" style="color: #e3e3e3">
       <span class="material-icons">search</span>
     </a>
 
-    <a href="#" style="color: #6AC045">
+    <a href="#" class="cursor-pointer" style="color: #6AC045">
       <b>4k</b>
     </a>
 
-    <a href="#" style="color: #e3e3e3">
+    <a href="#" class="cursor-pointer" style="color: #e3e3e3">
       <span class="material-icons">leaderboard</span>
     </a>
 
-    <a href="#" style="color: #e3e3e3">
+    <a href="#" class="cursor-pointer" style="color: #e3e3e3">
       <span class="material-icons">list_alt</span>
     </a>
 
-    <a href="#" style="color: #e3e3e3">
+    <a href="#" class="cursor-pointer" style="color: #e3e3e3">
       <span class="material-icons">person</span>
     </a>
   </div>
@@ -76,7 +75,7 @@
          fxLayoutGap="12px"
          style="font-weight: bold">
       <div *ngFor="let nav of navigationConfig">
-        <a>
+        <a class="cursor-pointer">
           {{nav.content}}
         </a>
       </div>

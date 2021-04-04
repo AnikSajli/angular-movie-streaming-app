@@ -47,26 +47,18 @@
   backface-visibility: hidden;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .header-slogan {
   font-size: 1.4em;
   margin-left: 2%;
 }
 
-//#search {
-//  width: 250px;
-//  height: 25px;
-//  font-size: .85em;
-//  color: #919191;
-//  border: 2px solid #333 ;
-//  padding: 4px 30px;
-//  background: #1d1d1d;
-//  border-radius: 50px;
-//}
-
 .search-wrapper {
   border-radius: 50px;
   overflow: hidden;
-  background-color: #FFFFFF;
   border: 2px solid #333;
   border-radius: 50px;
   height: 38px !important;
