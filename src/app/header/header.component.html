@@ -4,18 +4,21 @@
       ngClass.gt-md="padding64-x-nav"
       ngClass.gt-xs="padding48-x-nav">
 
-  <div>
+  <div fxLayout="row"
+        fxLayoutGap="16px">
     <a href="#" class="nav-logo">
       <img src="https://yts.mx/assets/images/website/logo-YTS.svg" alt="YIFY">
     </a>
+
+    <div fxShow="false"
+         fxShow.gt-md="true"
+         fxLayoutAlign="center center"
+         class="header-slogan">
+      HD movies at the smallest file size.
+    </div>
   </div>
 
-  <div fxShow="false"
-      fxShow.gt-xs="true"
-       fxShow.gt-sm="false"
-       fxLayoutAlign="center center">
-    HD movies at the smallest file size.
-  </div>
+
 
 
   <div  fxHide="false"
@@ -68,8 +71,6 @@
                 fxFlex>
             </div>
           </div>
-
-<!--      <input  placeholder="Quick Search" id="search">-->
     </div>
     <div fxLayout="row"
          fxLayoutGap="12px"
