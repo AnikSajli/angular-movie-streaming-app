@@ -68,11 +68,14 @@
 
 
   <ng-template #urlNav let-nav='nav'>
-     <span
+     <span #titleSpan
+       id="urlTitle"
        class="cursor-pointer"
        fxShow="false"
        fxShow.gt-sm="true"
-       [style.color] = "nav?.textColor">
+           [style.color]="nav?.textColor"
+           (mouseover)="onNavHovered(titleSpan, nav)"
+           (mouseout)="onNavMouseOut(titleSpan, nav)">
       {{nav.title}}
     </span>
 
@@ -89,12 +92,14 @@
   </ng-template>
 
   <ng-template #actionNav let-nav='nav'>
-    <span
+    <span #titleSpan
       class="cursor-pointer"
       fxShow="false"
       fxShow.gt-sm="true"
-      [style.color] = "nav?.textColor"
-      (click)="nav.action()">
+          [style.color]="nav?.textColor"
+          (mouseover)="onNavHovered(titleSpan, nav)"
+          (mouseout)="onNavMouseOut(titleSpan, nav)"
+          (click)="nav.action()">
       {{nav.title}}
     </span>
 

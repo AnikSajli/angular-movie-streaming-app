@@ -47,6 +47,10 @@
   backface-visibility: hidden;
 }
 
+.default-hover:hover {
+  color: white;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -96,6 +100,10 @@
 }
 
 .white-color {
+  color: white;
+}
+
+#urlTitle:hover {
   color: white;
 }
 

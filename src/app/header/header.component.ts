@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Navigation} from "./navigation.model";
+import {MatDialog} from "@angular/material/dialog";
+import {LoginModalComponent} from "../login-modal/login-modal.component";
 
 
 @Component({
@@ -10,18 +12,13 @@ import {Navigation} from "./navigation.model";
 
 
 export class HeaderComponent implements OnInit {
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   navigations: Navigation[] = [
     {
       title: 'Home',
       type: 'url',
-      url: '/',
-      textColor: '#919191',
-      textColorHover: 'white'
+      textColorHover: 'white',
+      url: '/'
     },
     {
       title: '4K',
@@ -32,13 +29,12 @@ export class HeaderComponent implements OnInit {
         name: '4k',
         type: 'mat-icon',
         color: '#6AC045'
-      }
+      },
     },
     {
       title: 'Trending',
       type: 'url',
       url: '/',
-      textColor: '#919191',
       textColorHover: 'white',
       icon: {
         name: 'leaderboard',
@@ -50,7 +46,6 @@ export class HeaderComponent implements OnInit {
       title: 'Browse Movies',
       type: 'url',
       url: '/',
-      textColor: '#919191',
       textColorHover: 'white',
       icon: {
         name: 'list_alt',
@@ -63,28 +58,47 @@ export class HeaderComponent implements OnInit {
       type: 'action',
       textColor: 'white',
       textColorHover: '#919191',
-      action: this.login
+      action: this.login.bind(this)
     },
     {
       title: 'Register',
       type: 'action',
       textColor: 'white',
       textColorHover: '#919191',
-      action: this.register,
+      action: this.register.bind(this),
       icon: {
         name: 'person',
         type: 'mat-icon',
         color: 'white'
       }
     }
-  ]
+  ];
+
+  constructor( public dialog: MatDialog ) {
+    console.log(this.dialog);
+  }
+
+  ngOnInit(): void {
+    console.log(this.dialog);
+  }
 
   login() : void {
-    console.log("login clicked");
+    console.log(this);
+    const dialogRef = this.dialog.open(LoginModalComponent);
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
   register() : void {
     console.log("register clicked");
   }
 
+
+  onNavHovered(spanRef: HTMLSpanElement, nav: Navigation) {
+    spanRef.style.color = nav?.textColorHover;
+  }
+
+  onNavMouseOut(spanRef: HTMLSpanElement, nav: Navigation) {
+    spanRef.style.color = nav?.textColor || 'unset';
+  }
 }
