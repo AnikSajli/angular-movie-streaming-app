@@ -1,8 +1,56 @@
-<h2 mat-dialog-title>LOGIN</h2>
-<mat-dialog-content>
+<div style="width: 600px">
+  <div
+    fxLayout="row"
+    class="modal-switcher">
+    <div
+      class="font-size-20"
+      fxFlex="50"
+      fxLayoutAlign="center center"
+      (click)="loginMode = true"
+      [ngClass]="{'selected': loginMode === true}">
+      Login
+    </div>
+    <div
+      fxFlex="50"
+      fxLayoutAlign="center center"
+      class="font-size-20"
+      (click)="loginMode = false"
+      [ngClass]="{'selected': loginMode === false}">
+      Register
+    </div>
+  </div>
+  <mat-dialog-content>
+    <form
+          [formGroup]="loginForm"
+          (ngSubmit)="onSubmit()"
+          class="pt-40">
+      <div fxLayout="column">
+        <div fxLayout="column" fxLayoutGap="8px">
+          <mat-form-field
+            appearance="outline">
+          <mat-label> Email </mat-label>
+            <input outline matInput formControlName="email">
+          </mat-form-field>
+          <mat-form-field
+            appearance="outline">
+            <mat-label> Password </mat-label>
+            <input type="password" matInput formControlName="password">
+          </mat-form-field>
+        </div>
 
-    <p>Achieve the maximum speed possible on the Web Platform today, and take it further, via Web
-      Workers and server-side rendering. Angular puts you in control over scalability. Meet huge
-      data requirements by building data models on RxJS, Immutable.js or another push-model.</p>
+        <div fxLayout="column" fxLayoutGap="28px">
+          <div fxLayoutAlign="center center">
+            <button
+              type="submit"
+              class="login-btn-style" [disabled]="!loginForm.valid">Login</button>
+          </div>
+          <div class="white-color">
+            <a>Forgot your password?</a>
+          </div>
+        </div>
+      </div>
+    </form>
 
-</mat-dialog-content>
+  </mat-dialog-content>
+</div>
+
