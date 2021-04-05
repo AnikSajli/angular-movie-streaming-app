@@ -1,54 +1,90 @@
 import { Component, OnInit } from '@angular/core';
+import {Navigation} from "./navigation.model";
+
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
 
+
+export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  navigationConfig = [
+  navigations: Navigation[] = [
     {
-      content: 'Home',
-      type: 'action',
-      color: 'red',
-      hoverColor: '#ffffff'
+      title: 'Home',
+      type: 'url',
+      url: '/',
+      textColor: '#919191',
+      textColorHover: 'white'
     },
     {
-      content: '4k',
-      type: 'action',
-      color: '#919191',
-      hoverColor: '#ffffff'
+      title: '4K',
+      type: 'url',
+      url: '/',
+      textColor: '#6AC045',
+      icon: {
+        name: '4k',
+        type: 'mat-icon',
+        color: '#6AC045'
+      }
     },
     {
-      content: 'Trending',
-      type: 'action',
-      color: '#919191',
-      hoverColor: '#ffffff'
+      title: 'Trending',
+      type: 'url',
+      url: '/',
+      textColor: '#919191',
+      textColorHover: 'white',
+      icon: {
+        name: 'leaderboard',
+        type: 'mat-icon',
+        color: 'white'
+      }
     },
     {
-      content: 'Browse Movies',
-      type: 'action',
-      color: '#919191',
-      hoverColor: '#ffffff'
+      title: 'Browse Movies',
+      type: 'url',
+      url: '/',
+      textColor: '#919191',
+      textColorHover: 'white',
+      icon: {
+        name: 'list_alt',
+        type: 'mat-icon',
+        color: 'white'
+      }
     },
     {
-      content: 'Login',
+      title: 'Login',
       type: 'action',
-      color: 'color: #fff !important',
-      hoverColor: '#ffffff'
+      textColor: 'white',
+      textColorHover: '#919191',
+      action: this.login
     },
     {
-      content: 'Register',
+      title: 'Register',
       type: 'action',
-      color: '#919191',
-      hoverColor: '#ffffff'
-    },
+      textColor: 'white',
+      textColorHover: '#919191',
+      action: this.register,
+      icon: {
+        name: 'person',
+        type: 'mat-icon',
+        color: 'white'
+      }
+    }
   ]
+
+  login() : void {
+    console.log("login clicked");
+  }
+
+  register() : void {
+    console.log("register clicked");
+  }
 
 }

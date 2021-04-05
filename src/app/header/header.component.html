@@ -1,11 +1,11 @@
 <div class="nav-bar"
      fxLayout="row"
-      fxLayoutAlign="space-between center"
-      ngClass.gt-md="padding64-x-nav"
-      ngClass.gt-xs="padding48-x-nav">
+     fxLayoutAlign="space-between center"
+     ngClass.gt-md="padding64-x-nav"
+     ngClass.xs="padding-right-nav">
 
   <div fxLayout="row"
-        fxLayoutGap="16px">
+       fxLayoutGap="16px">
     <a href="#" class="nav-logo">
       <img src="https://yts.mx/assets/images/website/logo-YTS.svg" alt="YIFY">
     </a>
@@ -18,71 +18,102 @@
     </div>
   </div>
 
+  <div
+    fxLayout="row"
+    fxLayoutGap="12px"
+    fxLayoutAlign="center center">
+            <div
+              fxShow="false"
+              fxShow.gt-sm="true"
+              fxLayoutAlign="start center"
+              class="search-wrapper">
+              <div class="search"
+                   fxLayout="row"
+                   fxLayoutAlign="space-between center">
+                <mat-icon
+                  style="cursor: pointer">search
+                </mat-icon>
+                <div>
+                  <input
+                    class="font-size-18"
+                    placeholder="Quick Search"
+                    formControlName="searchControl"
+                    fxFlex>
+                </div>
+              </div>
+        </div>
 
-
-
-  <div  fxHide="false"
-        fxHide.gt-sm="true"
-        fxLayout="row"
-        class="nav-mobile-buttons"
-        fxLayoutAlign="center center"
-        fxLayoutGap="4px"
-        style="padding-right: 4px">
-    <a href="#" class="cursor-pointer" style="color: #e3e3e3">
-      <span class="material-icons">search</span>
-    </a>
-
-    <a href="#" class="cursor-pointer" style="color: #6AC045">
-      <b>4k</b>
-    </a>
-
-    <a href="#" class="cursor-pointer" style="color: #e3e3e3">
-      <span class="material-icons">leaderboard</span>
-    </a>
-
-    <a href="#" class="cursor-pointer" style="color: #e3e3e3">
-      <span class="material-icons">list_alt</span>
-    </a>
-
-    <a href="#" class="cursor-pointer" style="color: #e3e3e3">
-      <span class="material-icons">person</span>
-    </a>
-  </div>
-
-  <div fxShow="false"
-       fxShow.gt-sm="true"
-        fxLayout="row"
-       fxLayoutGap="12px"
-       fxLayoutAlign="center center">
-        <div
-          fxLayoutAlign="start center"
-          class="search-wrapper">
-          <div class="search"
-               fxLayout="row"
-               fxLayoutAlign="space-between center">
-            <mat-icon
-              style="cursor: pointer">search
-            </mat-icon>
-            <div>
-              <input
-                class="font-size-18"
-                placeholder="Quick Search"
-                formControlName="searchControl"
-                fxFlex>
-            </div>
-          </div>
+    <div
+      fxShow="true"
+      fxShow.gt-sm="false">
+      <span
+        class="material-icons white-color">search</span>
     </div>
+
     <div fxLayout="row"
          fxLayoutGap="12px"
          style="font-weight: bold">
-      <div *ngFor="let nav of navigationConfig">
-        <a class="cursor-pointer">
-          {{nav.content}}
-        </a>
-      </div>
+      <ng-container *ngFor="let nav of navigations">
+        <ng-container [ngSwitch]="nav.type">
+          <ng-container *ngSwitchCase="'url'" [ngTemplateOutlet]="urlNav" [ngTemplateOutletContext]="{nav: nav}">
+          </ng-container>
+          <ng-container *ngSwitchCase="'action'" [ngTemplateOutlet]="actionNav"
+                        [ngTemplateOutletContext]="{nav: nav}"></ng-container>
+        </ng-container>
+      </ng-container>
 
     </div>
 
-</div>
+  </div>
 
 
+  <ng-template #urlNav let-nav='nav'>
+     <span
+       class="cursor-pointer"
+       fxShow="false"
+       fxShow.gt-sm="true"
+       [style.color] = "nav?.textColor">
+      {{nav.title}}
+    </span>
+
+    <div
+      class="cursor-pointer"
+      *ngIf="nav?.icon"
+      fxShow="true"
+      fxShow.gt-sm="false">
+      <ng-container
+        [ngTemplateOutlet]="iconRenderer"
+        [ngTemplateOutletContext]="{icon: nav.icon}">
+      </ng-container>
+    </div>
+  </ng-template>
+
+  <ng-template #actionNav let-nav='nav'>
+    <span
+      class="cursor-pointer"
+      fxShow="false"
+      fxShow.gt-sm="true"
+      [style.color] = "nav?.textColor"
+      (click)="nav.action()">
+      {{nav.title}}
+    </span>
+
+    <div
+      class="cursor-pointer"
+      *ngIf="nav?.icon"
+      fxShow="true"
+      fxShow.gt-sm="false"
+      (click)="nav.action()">
+      <ng-container
+        [ngTemplateOutlet]="iconRenderer"
+        [ngTemplateOutletContext]="{icon: nav.icon}">
+      </ng-container>
+    </div>
+  </ng-template>
+
+  <ng-template #iconRenderer let-icon='icon'>
+    <div [ngSwitch]="icon?.type"
+          [style.color] = "icon?.color">
+      <span *ngSwitchCase="'mat-icon'" class="material-icons">{{icon.name}}</span>
+    </div>
+  </ng-template>
