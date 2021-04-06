@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit {
           type: 'mat-icon',
           color: 'white'
         }
-      },
+      }
     ];
 
     if (!this.isLoggedIn) {
@@ -96,6 +96,18 @@ export class HeaderComponent implements OnInit {
 
     if (this.isLoggedIn) {
       this.navigations.push(
+        {
+          title: 'Suggestions',
+          type: 'url',
+          textColorHover: 'white',
+          url: '/'
+        },
+        {
+          title: 'Bookmarks',
+          type: 'url',
+          textColorHover: 'white',
+          url: '/'
+        },
         {
           title: this.email,
           type: 'url',

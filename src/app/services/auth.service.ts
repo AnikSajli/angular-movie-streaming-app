@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {catchError, tap} from "rxjs/operators";
-import {throwError} from "rxjs";
+import {BehaviorSubject, throwError} from "rxjs";
 import {AuthResponseData, LoginInfoModel} from "./auth.model";
+import {User} from "./user.model";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,8 @@ export class AuthService {
     isLoggedIn: false,
     email: ''
   };
+
+  user = new BehaviorSubject<User>(null);
   constructor(private http: HttpClient) {
   }
 
@@ -48,8 +51,20 @@ export class AuthService {
       .pipe(
         catchError(this.handleError),
         tap(resData => {
+          this.handleAuthentication(
+            resData.email,
+            resData.localId,
+            resData.idToken,
+            +resData.expiresIn
+          );
         })
       );
+  }
+
+  logout() {
+    this.user.next(null);
+    localStorage.removeItem('userData');
+    this.loginInfo.isLoggedIn = false;
   }
 
   setLoginInfo(isLoggedIn: boolean, email: string) {
@@ -79,6 +94,19 @@ export class AuthService {
         break;
     }
     return throwError(errorMessage);
+  }
+
+  private handleAuthentication(
+    email: string,
+    userId: string,
+    token: string,
+    expiresIn: number
+  ) {
+    const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+    const user = new User(email, userId, token, expirationDate);
+    this.user.next(user);
+    //this.autoLogout(expiresIn * 1000);
+    localStorage.setItem('userData', JSON.stringify(user));
   }
 }
 
