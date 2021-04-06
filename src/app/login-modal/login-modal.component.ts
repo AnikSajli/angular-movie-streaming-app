@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-login-modal',
@@ -13,7 +14,8 @@ export class LoginModalComponent implements OnInit {
   loginForm: FormGroup;
   signupForm: FormGroup;
 
-  constructor( @Inject(MAT_DIALOG_DATA) public data: boolean) {
+  constructor( @Inject(MAT_DIALOG_DATA) public data: boolean,
+               private authService: AuthService) {
     this.loginMode = this.data;
   }
 
@@ -37,10 +39,12 @@ export class LoginModalComponent implements OnInit {
   }
 
   onLoginSubmit() {
-   console.log(this.loginForm.value);
+
   }
 
   onSignupSubmit() {
-    console.log(this.signupForm.value);
+    const email = this.signupForm.value.email;
+    const password = this.signupForm.value.password;
+    this.authService.signup(email, password).subscribe();
   }
 }
