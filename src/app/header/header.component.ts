@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Navigation} from "./navigation.model";
 import {MatDialog} from "@angular/material/dialog";
 import {LoginModalComponent} from "../login-modal/login-modal.component";
+import {AuthService} from "../services/auth.service";
 
 
 @Component({
@@ -16,10 +17,13 @@ export class HeaderComponent implements OnInit {
   email: string;
   isLoggedIn: boolean;
 
-  constructor( public dialog: MatDialog ) {
+  constructor(public dialog: MatDialog,
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
+    this.email = this.authService.getLoginInfo()?.email;
+    this.isLoggedIn = this.authService.getLoginInfo()?.isLoggedIn;
     this.initNavigation(this.isLoggedIn);
   }
 
@@ -88,6 +92,17 @@ export class HeaderComponent implements OnInit {
          }
        }
      ) ;
+    }
+
+    if (this.isLoggedIn) {
+      this.navigations.push(
+        {
+          title: this.email,
+          type: 'url',
+          textColor: 'white',
+          textColorHover: '#919191',
+        }
+      ) ;
     }
   }
 

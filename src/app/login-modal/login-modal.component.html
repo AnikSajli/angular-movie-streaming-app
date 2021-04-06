@@ -29,13 +29,21 @@
           <div fxLayout="column" fxLayoutGap="8px">
             <mat-form-field
               appearance="outline">
-              <mat-label> Email </mat-label>
-              <input outline matInput formControlName="email">
+              <div
+                fxLayout="row"
+                fxLayoutGap="8px">
+                <span class="material-icons icon-color">person</span>
+                <input placeholder="Email" outline matInput formControlName="email">
+              </div>
             </mat-form-field>
             <mat-form-field
               appearance="outline">
-              <mat-label> Password </mat-label>
-              <input type="password" matInput formControlName="password">
+              <div
+                fxLayout="row"
+                fxLayoutGap="8px">
+                <span class="material-icons icon-color">lock</span>
+                <input placeholder="Password" type="password" matInput formControlName="password">
+              </div>
             </mat-form-field>
           </div>
 
@@ -65,13 +73,22 @@
           <div fxLayout="column" fxLayoutGap="8px">
             <mat-form-field
               appearance="outline">
-              <mat-label> Email </mat-label>
-              <input outline matInput formControlName="email">
+              <div
+                fxLayout="row"
+                fxLayoutGap="8px">
+              <span class="material-icons icon-color">person</span>
+              <input placeholder="Email" outline matInput formControlName="email">
+              </div>
+
             </mat-form-field>
             <mat-form-field
               appearance="outline">
-              <mat-label> Password </mat-label>
-              <input type="password" matInput formControlName="password">
+                <div
+                  fxLayout="row"
+                  fxLayoutGap="8px">
+                  <span class="material-icons icon-color">lock</span>
+                  <input placeholder="Password" type="password" matInput formControlName="password">
+                </div>
             </mat-form-field>
           </div>
 

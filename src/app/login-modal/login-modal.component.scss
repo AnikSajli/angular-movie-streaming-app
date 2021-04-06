@@ -49,3 +49,11 @@
 .terms-msg {
   color: #428bca;
 }
+
+.icon-color {
+  color: #d2d8d8;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #d2d8d8;
+}

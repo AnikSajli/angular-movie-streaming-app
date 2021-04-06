@@ -13,8 +13,6 @@ export class LoginModalComponent implements OnInit {
   loginMode: boolean;
   loginForm: FormGroup;
   signupForm: FormGroup;
-  isLoggedIn: boolean;
-  email: string;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: boolean,
               private authService: AuthService,
@@ -45,9 +43,7 @@ export class LoginModalComponent implements OnInit {
     const email = this.loginForm.value.email;
     const password = this.loginForm.value.password;
     this.authService.login(email, password).subscribe(res => {
-      this.isLoggedIn = true;
-      this.email = res.email;
-
+      this.authService.setLoginInfo(true, res.email);
       this.dialogRef.close({
         email: res.email,
         isLoggedIn: true

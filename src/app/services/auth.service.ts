@@ -3,23 +3,18 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {catchError, tap} from "rxjs/operators";
 import {throwError} from "rxjs";
-
-export interface AuthResponseData {
-  idToken: string;
-  email: string;
-  refreshToken: string;
-  expiresIn: string;
-  localId: string;
-  registered ?: boolean;
-}
+import {AuthResponseData, LoginInfoModel} from "./auth.model";
 
 @Injectable({
   providedIn: 'root'
 })
 
-
 export class AuthService {
 
+  loginInfo: LoginInfoModel = {
+    isLoggedIn: false,
+    email: ''
+  };
   constructor(private http: HttpClient) {
   }
 
@@ -55,6 +50,16 @@ export class AuthService {
         tap(resData => {
         })
       );
+  }
+
+  setLoginInfo(isLoggedIn: boolean, email: string) {
+    this.loginInfo.isLoggedIn = isLoggedIn;
+    this.loginInfo.email = email;
+    console.log(this.loginInfo);
+  }
+  getLoginInfo() {
+    console.log(this.loginInfo);
+    return this.loginInfo;
   }
 
   private handleError(errorRes: HttpErrorResponse) {
