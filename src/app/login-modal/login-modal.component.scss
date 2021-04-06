@@ -12,7 +12,6 @@
   background: #fff;
   color: #6ac045;
   font-weight: bold;
-  letter-spacing: -1px;
   border-radius: .25em .25em 0 0;
 }
 
@@ -21,12 +20,12 @@
 }
 
 .login-btn-style {
+  cursor: pointer;
   background: #6ac045;
   border-radius: 3px;
   display: block;
   font-weight: bold;
   color: #fff;
-  top: 35px;
   font-size: 16px;
   position: relative;
   width: 100%;
