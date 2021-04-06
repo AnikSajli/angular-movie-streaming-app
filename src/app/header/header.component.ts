@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Navigation} from "./navigation.model";
 import {MatDialog} from "@angular/material/dialog";
 import {LoginModalComponent} from "../login-modal/login-modal.component";
 import {AuthService} from "../services/auth.service";
+import {Subscription} from "rxjs";
 
 
 @Component({
@@ -16,6 +17,7 @@ export class HeaderComponent implements OnInit {
   navigations: Navigation[];
   email: string;
   isLoggedIn: boolean;
+  subs: Subscription[];
 
   constructor(public dialog: MatDialog,
               private authService: AuthService) {
@@ -123,11 +125,12 @@ export class HeaderComponent implements OnInit {
       {
         data: true
       });
-    dialogRef.afterClosed().subscribe(result => {
+    const subscription = dialogRef.afterClosed().subscribe(result => {
       this.isLoggedIn = result.isLoggedIn;
       this.email = result.email;
       this.initNavigation(this.isLoggedIn);
     });
+    this.subs.push(subscription);
   }
 
   register() : void {
@@ -135,8 +138,9 @@ export class HeaderComponent implements OnInit {
       {
         data: false
       });
-    dialogRef.afterClosed().subscribe((result: any) => {
+     const subscription = dialogRef.afterClosed().subscribe((result: any) => {
     });
+    this.subs.push(subscription);
   }
 
 

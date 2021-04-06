@@ -1,7 +1,8 @@
-import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {AuthService} from "../services/auth.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-login-modal',
@@ -9,11 +10,12 @@ import {AuthService} from "../services/auth.service";
   styleUrls: ['./login-modal.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class LoginModalComponent implements OnInit {
+export class LoginModalComponent implements OnInit, OnDestroy {
 
   loginMode: boolean;
   loginForm: FormGroup;
   signupForm: FormGroup;
+  subs: Subscription[] = [];
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: boolean,
               private authService: AuthService,
@@ -43,18 +45,26 @@ export class LoginModalComponent implements OnInit {
   onLoginSubmit() {
     const email = this.loginForm.value.email;
     const password = this.loginForm.value.password;
-    this.authService.login(email, password).subscribe(res => {
+    const subscription = this.authService.login(email, password).subscribe(res => {
       this.authService.setLoginInfo(true, res.email);
       this.dialogRef.close({
         email: res.email,
         isLoggedIn: true
       });
     });
+    this.subs.push(subscription);
   }
 
   onSignupSubmit() {
     const email = this.signupForm.value.email;
     const password = this.signupForm.value.password;
-    this.authService.signup(email, password).subscribe();
+    const subscription = this.authService.signup(email, password).subscribe();
+    this.subs.push(subscription);
+  }
+
+  ngOnDestroy(): void {
+    this.subs.forEach(subscription => {
+      subscription.unsubscribe();
+    })
   }
 }
