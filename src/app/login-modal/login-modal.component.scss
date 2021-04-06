@@ -57,3 +57,13 @@
 :host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
   color: #d2d8d8;
 }
+
+.mat-dialog-content {
+  width: 90%;
+  margin: 0px !important;
+  padding-bottom: 24px;
+}
+
+.mat-dialog-container {
+  padding: 0px !important;
+}
