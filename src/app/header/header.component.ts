@@ -83,10 +83,9 @@ export class HeaderComponent implements OnInit {
   }
 
   login() : void {
-    // @ts-ignore
     const dialogRef = this.dialog.open(LoginModalComponent,
       {
-        loginMode: true
+        data: true
       });
     dialogRef.afterClosed().subscribe(result => {
     });
