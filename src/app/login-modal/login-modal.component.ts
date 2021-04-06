@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-login-modal',
@@ -9,16 +10,16 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class LoginModalComponent implements OnInit {
 
   loginMode: boolean;
+  loginForm: FormGroup;
+  signupForm: FormGroup;
 
-  loginForm = new FormGroup({
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-  });
-
-  constructor() { }
+  constructor( @Inject(MAT_DIALOG_DATA) public data: boolean) {
+    this.loginMode = this.data;
+  }
 
   ngOnInit(): void {
     this.initLoginForm();
+    this.initSignupForm();
   }
 
   initLoginForm(): any {
@@ -28,7 +29,18 @@ export class LoginModalComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    console.log("submit clicked")
+  initSignupForm(): any {
+    this.signupForm = new FormGroup({
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
+    });
+  }
+
+  onLoginSubmit() {
+   console.log(this.loginForm.value);
+  }
+
+  onSignupSubmit() {
+    console.log(this.signupForm.value);
   }
 }

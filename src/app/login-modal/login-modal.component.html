@@ -20,10 +20,10 @@
     </div>
   </div>
   <mat-dialog-content>
-    <div>
+    <div *ngIf="loginMode">
       <form
         [formGroup]="loginForm"
-        (ngSubmit)="onSubmit()"
+        (ngSubmit)="onLoginSubmit()"
         class="pt-40">
         <div fxLayout="column">
           <div fxLayout="column" fxLayoutGap="8px">
@@ -56,6 +56,41 @@
     </div>
 
 
+    <div *ngIf="!loginMode">
+      <form
+        [formGroup]="signupForm"
+        (ngSubmit)="onSignupSubmit()"
+        class="pt-40">
+        <div fxLayout="column">
+          <div fxLayout="column" fxLayoutGap="8px">
+            <mat-form-field
+              appearance="outline">
+              <mat-label> Email </mat-label>
+              <input outline matInput formControlName="email">
+            </mat-form-field>
+            <mat-form-field
+              appearance="outline">
+              <mat-label> Password </mat-label>
+              <input type="password" matInput formControlName="password">
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="column" fxLayoutGap="28px">
+            <div fxLayoutAlign="center center"
+                  class="register-msg">
+              By clicking Register, you agree to our <span class="terms-msg"> Terms and Condition</span>
+            </div>
+            <div
+              fxLayoutAlign="center center">
+              <button
+                type="submit"
+                class="login-btn-style"
+                [disabled]="!loginForm.valid">Register</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
   </mat-dialog-content>
 </div>
 

@@ -83,14 +83,22 @@ export class HeaderComponent implements OnInit {
   }
 
   login() : void {
-    console.log(this);
-    const dialogRef = this.dialog.open(LoginModalComponent);
+    // @ts-ignore
+    const dialogRef = this.dialog.open(LoginModalComponent,
+      {
+        loginMode: true
+      });
     dialogRef.afterClosed().subscribe(result => {
     });
   }
 
   register() : void {
-    console.log("register clicked");
+    const dialogRef = this.dialog.open(LoginModalComponent,
+      {
+        data: false
+      });
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
 
