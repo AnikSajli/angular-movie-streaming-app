@@ -20,10 +20,10 @@ export interface AuthResponseData {
 
 export class AuthService {
 
-  constructor( private http: HttpClient ) { }
+  constructor(private http: HttpClient) {
+  }
 
   signup(email: string, password: string) {
-    debugger
     return this.http
       .post<AuthResponseData>(
         'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=' + environment.firebaseAPIKey,
@@ -36,7 +36,6 @@ export class AuthService {
       .pipe(
         catchError(this.handleError),
         tap(resData => {
-          debugger
         })
       );
   }
@@ -54,7 +53,6 @@ export class AuthService {
       .pipe(
         catchError(this.handleError),
         tap(resData => {
-          debugger
         })
       );
   }
@@ -78,3 +76,4 @@ export class AuthService {
     return throwError(errorMessage);
   }
 }
+

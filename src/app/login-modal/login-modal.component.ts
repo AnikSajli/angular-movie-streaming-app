@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {AuthService} from "../services/auth.service";
 
 @Component({
@@ -17,7 +17,8 @@ export class LoginModalComponent implements OnInit {
   email: string;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: boolean,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private dialogRef: MatDialogRef<LoginModalComponent>) {
     this.loginMode = this.data;
   }
 
@@ -46,6 +47,11 @@ export class LoginModalComponent implements OnInit {
     this.authService.login(email, password).subscribe(res => {
       this.isLoggedIn = true;
       this.email = res.email;
+
+      this.dialogRef.close({
+        email: res.email,
+        isLoggedIn: true
+      });
     });
   }
 
