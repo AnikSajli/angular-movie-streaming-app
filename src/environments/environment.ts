@@ -7,6 +7,16 @@ export const environment = {
   firebaseAPIKey: 'AIzaSyCTFjv4D0__00P4gHTdv2crBV7A8vQUjbY'
 };
 
+export const firebaseConfig = {
+  apiKey: "AIzaSyCTFjv4D0__00P4gHTdv2crBV7A8vQUjbY",
+  authDomain: "angular-movie-streaming-app.firebaseapp.com",
+  projectId: "angular-movie-streaming-app",
+  storageBucket: "angular-movie-streaming-app.appspot.com",
+  messagingSenderId: "311531654067",
+  appId: "1:311531654067:web:54b40342f65354e92799c6",
+  measurementId: "G-YYLBMD6B8S"
+};
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

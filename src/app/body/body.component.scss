@@ -1,0 +1,65 @@
+#popular-downloads  {
+  font-size: 18px;
+  text-color: white;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 20px;
+  padding-top: 16px;
+  font-weight: bold;
+  padding-left: 8px;
+}
+
+.card-style {
+  display: inline-block;
+  max-width: 220px;
+  border: 5px solid #fff;
+  transition: border .15s ease-in-out;
+  border-radius: 4px;
+  font-size: 24px;
+}
+.blue {
+  color: #428bca;
+}
+.white {
+  color: white;
+}
+
+.gray {
+  color: #919191;
+}
+
+.icon {
+  color: #6ac045;
+}
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.card-bottom {
+  margin: 0 auto;
+  padding: 0 5px;
+  max-width: 220px;
+  text-align: left;
+}
+
+.display-contents {
+  display: contents;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.bg-color {
+  background-color: #1d1d1d;
+}
+
+.font-size-44 {
+  font-size: 44px;
+}
+
+
+
