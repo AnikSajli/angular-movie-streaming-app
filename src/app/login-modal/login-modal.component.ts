@@ -18,6 +18,7 @@ export class LoginModalComponent implements OnInit, OnDestroy {
   subs: Subscription[] = [];
   loginErrorMessage: string;
   signupErrorMessage: string;
+  isLoading = false;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: boolean,
               private authService: AuthService,
@@ -45,12 +46,15 @@ export class LoginModalComponent implements OnInit, OnDestroy {
   }
 
   onLoginSubmit() {
+    this.isLoading = true;
     const email = this.loginForm.value.email;
     const password = this.loginForm.value.password;
     const subscription = this.authService.login(email, password).subscribe(res => {
+      this.isLoading = false;
       this.closeModal(res.email);
     },
       error => {
+        this.isLoading = false;
         this.loginErrorMessage = error;
       }
     );
@@ -58,12 +62,15 @@ export class LoginModalComponent implements OnInit, OnDestroy {
   }
 
   onSignupSubmit() {
+    this.isLoading = true;
     const email = this.signupForm.value.email;
     const password = this.signupForm.value.password;
     const subscription = this.authService.signup(email, password).subscribe(res => {
+      this.isLoading = false;
       this.closeModal(res.email);
     },
       error => {
+        this.isLoading = false;
         this.signupErrorMessage = error;
       });
     this.subs.push(subscription);

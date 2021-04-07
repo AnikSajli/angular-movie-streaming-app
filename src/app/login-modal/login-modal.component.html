@@ -20,7 +20,17 @@
     </div>
   </div>
   <mat-dialog-content>
-    <div *ngIf="loginMode"
+    <div
+      *ngIf="isLoading"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayoutGap="12px"
+      class="loader">
+      <mat-spinner></mat-spinner>
+      <p>Loading, Please wait</p>
+    </div>
+
+    <div *ngIf="loginMode && !isLoading"
          [formGroup]="loginForm"
          (ngSubmit)="onLoginSubmit()">
       <form
@@ -72,7 +82,7 @@
     </div>
 
 
-    <div *ngIf="!loginMode"
+    <div *ngIf="!loginMode && !isLoading"
          [formGroup]="signupForm"
          (ngSubmit)="onSignupSubmit()">
       <form
