@@ -16,6 +16,8 @@ export class LoginModalComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
   signupForm: FormGroup;
   subs: Subscription[] = [];
+  loginErrorMessage: string;
+  signupErrorMessage: string;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: boolean,
               private authService: AuthService,
@@ -47,7 +49,11 @@ export class LoginModalComponent implements OnInit, OnDestroy {
     const password = this.loginForm.value.password;
     const subscription = this.authService.login(email, password).subscribe(res => {
       this.closeModal(res.email);
-    });
+    },
+      error => {
+        this.loginErrorMessage = error;
+      }
+    );
     this.subs.push(subscription);
   }
 
@@ -56,7 +62,10 @@ export class LoginModalComponent implements OnInit, OnDestroy {
     const password = this.signupForm.value.password;
     const subscription = this.authService.signup(email, password).subscribe(res => {
       this.closeModal(res.email);
-    });
+    },
+      error => {
+        this.signupErrorMessage = error;
+      });
     this.subs.push(subscription);
   }
 

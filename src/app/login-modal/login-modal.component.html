@@ -20,13 +20,21 @@
     </div>
   </div>
   <mat-dialog-content>
-    <div *ngIf="loginMode">
+    <div *ngIf="loginMode"
+         [formGroup]="loginForm"
+         (ngSubmit)="onLoginSubmit()">
       <form
-        [formGroup]="loginForm"
-        (ngSubmit)="onLoginSubmit()"
         class="pt-40">
         <div fxLayout="column">
-          <div fxLayout="column" fxLayoutGap="8px">
+          <div
+            fxLayout="column"
+            fxLayoutGap="8px">
+            <div
+              *ngIf="loginErrorMessage"
+              fxLayoutAlign="center"
+              class="error-msg">
+              {{loginErrorMessage}}
+            </div>
             <mat-form-field
               appearance="outline">
               <div
@@ -64,13 +72,19 @@
     </div>
 
 
-    <div *ngIf="!loginMode">
+    <div *ngIf="!loginMode"
+         [formGroup]="signupForm"
+         (ngSubmit)="onSignupSubmit()">
       <form
-        [formGroup]="signupForm"
-        (ngSubmit)="onSignupSubmit()"
         class="pt-40">
         <div fxLayout="column">
           <div fxLayout="column" fxLayoutGap="8px">
+            <div
+              *ngIf="signupErrorMessage"
+              fxLayoutAlign="center"
+              class="error-msg">
+              {{signupErrorMessage}}
+            </div>
             <mat-form-field
               appearance="outline">
               <div
