@@ -46,11 +46,7 @@ export class LoginModalComponent implements OnInit, OnDestroy {
     const email = this.loginForm.value.email;
     const password = this.loginForm.value.password;
     const subscription = this.authService.login(email, password).subscribe(res => {
-      this.authService.setLoginInfo(true, res.email);
-      this.dialogRef.close({
-        email: res.email,
-        isLoggedIn: true
-      });
+      this.closeModal(res.email);
     });
     this.subs.push(subscription);
   }
@@ -58,8 +54,17 @@ export class LoginModalComponent implements OnInit, OnDestroy {
   onSignupSubmit() {
     const email = this.signupForm.value.email;
     const password = this.signupForm.value.password;
-    const subscription = this.authService.signup(email, password).subscribe();
+    const subscription = this.authService.signup(email, password).subscribe(res => {
+      this.closeModal(res.email);
+    });
     this.subs.push(subscription);
+  }
+
+  closeModal(email: string): void {
+    this.dialogRef.close({
+      email: email,
+      isLoggedIn: true
+    });
   }
 
   ngOnDestroy(): void {

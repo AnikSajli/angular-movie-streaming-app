@@ -16,17 +16,20 @@ export class HeaderComponent implements OnInit {
 
   navigations: Navigation[];
   email: string;
-  isLoggedIn: boolean;
-  subs: Subscription[];
+  isLoggedIn = false;
+  subs: Subscription[] = [];
 
   constructor(public dialog: MatDialog,
               private authService: AuthService) {
   }
 
   ngOnInit(): void {
-    this.email = this.authService.getLoginInfo()?.email;
-    this.isLoggedIn = this.authService.getLoginInfo()?.isLoggedIn;
-    this.initNavigation(this.isLoggedIn);
+    this.authService.user.subscribe(user => {
+       this.isLoggedIn = !user ? false:true;
+       this.email = user?.email;
+      this.initNavigation(this.isLoggedIn);
+    });
+
   }
 
   initNavigation(isLoggedIn): void {
