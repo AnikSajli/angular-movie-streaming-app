@@ -1,12 +1,29 @@
 #popular-downloads  {
   font-size: 18px;
   text-color: white;
-  font-weight: 700;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding-bottom: 20px;
   padding-top: 16px;
   font-weight: bold;
   padding-left: 8px;
+}
+
+#latest-yifi  {
+  font-size: 18px;
+  text-color: white;
+  padding-bottom: 20px;
+  padding-top: 16px;
+  font-weight: bold;
+  padding-left: 16px;
+}
+
+#upcoming-yifi  {
+  font-size: 18px;
+  text-color: white;
+  padding-bottom: 20px;
+  padding-top: 16px;
+  font-weight: bold;
+  padding-left: 16px;
 }
 
 .card-style {
@@ -17,6 +34,42 @@
   border-radius: 4px;
   font-size: 24px;
 }
+
+.card-caption {
+    color: white;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    transition: all 300ms;
+    transition-delay: 100ms;
+    padding-top: 20px;
+}
+
+.card-caption-button {
+  background: #6ac045;
+  border-radius: 3px;
+  display: block;
+  font-weight: bold;
+  color: #fff;
+  top: 25px;
+  font-size: 16px;
+  position: relative;
+  width: 130px;
+  padding: 7px 0;
+  margin: 0 auto;
+  transition: all 300ms ease;
+}
+
+.rating {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .blue {
   color: #428bca;
 }
@@ -59,6 +112,22 @@
 
 .font-size-44 {
   font-size: 44px;
+}
+
+.font-size-14 {
+  font-size: 14px;
+}
+
+.width-75 {
+  width: 75%;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.mr-20 {
+  margin-right: 20px;
 }
 
 
