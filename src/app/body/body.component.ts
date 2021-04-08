@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import firebase from "firebase";
 import {AngularFireDatabase} from "@angular/fire/database";
+import {UniversityDataService} from "../services/university-data.service";
 
 @Component({
   selector: 'app-body',
@@ -10,11 +11,23 @@ import {AngularFireDatabase} from "@angular/fire/database";
 })
 export class BodyComponent implements OnInit {
 
-  uniList: any;
+  uniList: any[] = []
   constructor( private http: HttpClient,
-               private firebaseDB: AngularFireDatabase) { }
+               private firebaseDB: AngularFireDatabase,
+               private uniDataService: UniversityDataService) { }
 
   ngOnInit(): void {
+    this.fetchUniData(12)
+  }
+
+  fetchUniData(count: number): void {
+     this.uniDataService.getUniversityData(count).then(response => {
+      console.log(response.val())
+       this.uniList = Object.keys(response.val()).map(index => {
+         let uni = response.val()[index];
+         return uni
+       })
+    });
   }
 
   // populateData() {
