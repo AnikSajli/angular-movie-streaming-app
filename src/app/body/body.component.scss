@@ -33,21 +33,36 @@
   transition: border .15s ease-in-out;
   border-radius: 4px;
   font-size: 24px;
+  position: relative;
 }
 
 .card-caption {
+    //color: white;
+    //height: 100%;
+    //left: 0;
+    //opacity: 0;
+    //position: absolute;
+    //right: 0;
+    //top: 0;
+    //z-index: 2;
+    //width: 100%;
+    //padding-top: 20px;
+
+    width:90%;
+    height:90%;
+    margin:5%;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1;
+    background:rgba(0,0,0,0.5);
     color: white;
-    height: 100%;
-    left: 0;
     opacity: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 2;
-    width: 100%;
-    transition: all 300ms;
-    transition-delay: 100ms;
-    padding-top: 20px;
+    transition:opacity 1s;
+}
+
+.card-caption:hover {
+    opacity: 1;
 }
 
 .card-caption-button {
@@ -89,6 +104,7 @@
   display: block;
   max-width: 100%;
   height: auto;
+  position:relative;
 }
 
 .card-bottom {
@@ -128,6 +144,16 @@
 
 .mr-20 {
   margin-right: 20px;
+}
+
+.content-dark {
+  background: #171717;
+  width: 100%;
+}
+
+.progress-bar {
+  width: 55%;
+  height: 15px;
 }
 
 
