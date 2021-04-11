@@ -54,13 +54,13 @@
         <div
           fxFlex="100"
           fxFlex.gt-xs="75"
-          fxLayout="column"
-          fxLayout.gt-xs="row"
           fxLayoutAlign="center center"
-          fxLayoutGap="20px">
+          fxLayoutGap="20px grid"
+          fxLayout="row wrap">
           <div
             *ngFor="let uni of popularUnilist"
-            fxFlex="100"
+            fxFlex="50"
+            fxFlex.gt-xs="25"
             fxLayoutAlign="center center"
             fxLayoutGap="20px">
               <app-university-card [universityInfo]="uni"></app-university-card>
@@ -93,20 +93,22 @@
         </div>
 
         <div
-          fxFlex="100"
-          fxLayout="column"
-          fxLayout.gt-xs="row"
           fxLayoutAlign="center center"
-          fxLayoutGap="20px"
           ngClass.gt-xs="width-75">
+          <div
+            fxFlex="99"
+            fxLayoutAlign="center center"
+            fxLayoutGap="20px grid"
+            fxLayout="row wrap">
             <div
               *ngFor="let uni of latestUnilist"
-              fxFlex="100"
-              fxFlex.gt-xs="75"
+              fxFlex="50"
+              fxFlex.gt-xs="25"
               fxLayoutAlign="center center"
               fxLayoutGap="20px">
               <app-university-card [universityInfo]="uni"></app-university-card>
             </div>
+          </div>
         </div>
       </div>
 
@@ -133,19 +135,21 @@
         </div>
 
         <div
-          fxFlex="100"
-          fxLayout="column"
-          fxLayout.gt-xs="row"
           fxLayoutAlign="center center"
-          fxLayoutGap="20px"
           ngClass.gt-xs="width-75">
           <div
-            *ngFor="let uni of upcomingUnilist"
-            fxFlex="100"
-            fxFlex.gt-xs="75"
+            fxFlex="99"
             fxLayoutAlign="center center"
-            fxLayoutGap="20px">
+            fxLayoutGap="20px grid"
+            fxLayout="row wrap">
+            <div
+              *ngFor="let uni of upcomingUnilist"
+              fxFlex="50"
+              fxFlex.gt-xs="25"
+              fxLayoutAlign="center center"
+              fxLayoutGap="20px">
               <app-university-card [universityInfo]="uni"></app-university-card>
+            </div>
           </div>
         </div>
       </div>
