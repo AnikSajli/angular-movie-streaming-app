@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import firebase from "firebase";
 import {AngularFireDatabase} from "@angular/fire/database";
-import {UniversityDataService} from "../services/university-data.service";
+import {UniversityDataService} from "../../../services/university-data.service";
 
 @Component({
-  selector: 'app-body',
-  templateUrl: './body.component.html',
-  styleUrls: ['./body.component.scss']
+  selector: 'app-university-list',
+  templateUrl: './university-list.component.html',
+  styleUrls: ['./university-list.component.scss']
 })
-export class BodyComponent implements OnInit {
+export class UniversityListComponent implements OnInit {
 
   uniList: any[] = []
   constructor( private http: HttpClient,

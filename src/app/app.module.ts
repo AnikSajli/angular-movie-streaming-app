@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { BodyComponent } from './body/body.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDialogModule} from "@angular/material/dialog";
@@ -19,13 +18,13 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {firebaseConfig} from "../environments/environment";
 import {AngularFireModule} from "@angular/fire";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
+import {HomeModule} from "./home/home.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    BodyComponent,
     LoginModalComponent,
   ],
   imports: [
@@ -42,7 +41,8 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
     MatInputModule,
     MatButtonModule,
     HttpClientModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    HomeModule
 
   ],
   providers: [],
