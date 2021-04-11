@@ -31,14 +31,14 @@ export class LoginModalComponent implements OnInit, OnDestroy {
     this.initSignupForm();
   }
 
-  initLoginForm(): any {
+  initLoginForm(): void {
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
     });
   }
 
-  initSignupForm(): any {
+  initSignupForm(): void {
     this.signupForm = new FormGroup({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)

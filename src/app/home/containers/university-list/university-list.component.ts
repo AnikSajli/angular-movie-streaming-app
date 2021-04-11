@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import firebase from "firebase";
 import {AngularFireDatabase} from "@angular/fire/database";
 import {UniversityDataService} from "../../../services/university-data.service";
+import {UniversityDataModel} from "../../models/university-data.model";
 
 @Component({
   selector: 'app-university-list',
@@ -11,7 +12,7 @@ import {UniversityDataService} from "../../../services/university-data.service";
 })
 export class UniversityListComponent implements OnInit {
 
-  uniList: any[] = []
+  uniList: UniversityDataModel[] = []
   constructor( private http: HttpClient,
                private firebaseDB: AngularFireDatabase,
                private uniDataService: UniversityDataService) { }
