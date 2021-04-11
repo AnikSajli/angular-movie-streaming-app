@@ -5,11 +5,13 @@ import {RouterModule} from "@angular/router";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDialogModule} from "@angular/material/dialog";
+import { UniversityCardComponent } from './components/university-card/university-card.component';
 
 
 @NgModule({
   declarations: [
     UniversityListComponent,
+    UniversityCardComponent,
   ],
   exports: [
     UniversityListComponent

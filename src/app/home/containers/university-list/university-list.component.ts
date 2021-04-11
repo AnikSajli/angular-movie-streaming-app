@@ -13,6 +13,10 @@ import {UniversityDataModel} from "../../models/university-data.model";
 export class UniversityListComponent implements OnInit {
 
   uniList: UniversityDataModel[] = []
+  popularUnilist: UniversityDataModel[] = []
+  latestUnilist: UniversityDataModel[] = []
+  upcomingUnilist: UniversityDataModel[] = []
+
   constructor( private http: HttpClient,
                private firebaseDB: AngularFireDatabase,
                private uniDataService: UniversityDataService) { }
@@ -28,7 +32,19 @@ export class UniversityListComponent implements OnInit {
          let uni = response.val()[index];
          return uni
        })
+       this.spliceUniList();
     });
+  }
+
+  spliceUniList(): void {
+    let list = this.uniList;
+    let chunks = [], i = 0, n = list.length;
+    while (i < n) {
+      chunks.push(list.slice(i, i += 4));
+    }
+    this.popularUnilist = chunks[0];
+    this.latestUnilist = chunks[1];
+    this.upcomingUnilist = chunks[2];
   }
 
   // populateData() {
