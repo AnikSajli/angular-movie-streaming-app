@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  firebaseAPIKey: 'AIzaSyCTFjv4D0__00P4gHTdv2crBV7A8vQUjbY'
+  firebaseAPIKey: 'AIzaSyCTFjv4D0__00P4gHTdv2crBV7A8vQUjbY',
+  tmdbAPIkey: '069ca8fd3e5555496a3045ec76dd7422'
 };
 
 export const firebaseConfig = {
@@ -16,6 +17,7 @@ export const firebaseConfig = {
   appId: "1:311531654067:web:54b40342f65354e92799c6",
   measurementId: "G-YYLBMD6B8S"
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

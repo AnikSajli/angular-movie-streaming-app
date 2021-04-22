@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {UniversityListComponent} from "./containers/university-list/university-list.component";
+import {MovieListComponent} from "./containers/movie-list/movie-list.component";
 import {RouterModule} from "@angular/router";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDialogModule} from "@angular/material/dialog";
-import { UniversityCardComponent } from './components/university-card/university-card.component';
+import { MovieCardComponent } from './components/movie-card/movie-card.component';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 
 
 @NgModule({
   declarations: [
-    UniversityListComponent,
-    UniversityCardComponent,
+    MovieListComponent,
+    MovieCardComponent,
+    MovieDetailsComponent,
   ],
   exports: [
-    UniversityListComponent
+    MovieListComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,7 @@ import { UniversityCardComponent } from './components/university-card/university
     RouterModule.forChild([
       {
         path: '',
-        component: UniversityListComponent
+        component: MovieListComponent
       }
     ])
   ]
