@@ -5,6 +5,7 @@ import {AngularFireDatabase} from "@angular/fire/database";
 import {UniversityDataService} from "../../../services/university-data.service";
 import {UniversityDataModel} from "../../models/university-data.model";
 import {MovieQueryService} from "../../../services/movie-query.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-university-list',
@@ -21,7 +22,8 @@ export class MovieListComponent implements OnInit {
   constructor( private http: HttpClient,
                private firebaseDB: AngularFireDatabase,
                private uniDataService: UniversityDataService,
-               private movieQueryService: MovieQueryService) { }
+               private movieQueryService: MovieQueryService,
+               private router: Router) { }
 
   ngOnInit(): void {
     // this.fetchUniData(12)
@@ -88,4 +90,7 @@ export class MovieListComponent implements OnInit {
   //   // });
   // }
 
+  navigateToMovieDetails(movie: any) {
+    console.log(this.router.navigate(['details',movie.id]));
+  }
 }

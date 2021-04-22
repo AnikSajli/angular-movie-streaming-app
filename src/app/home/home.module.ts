@@ -27,7 +27,11 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
       {
         path: '',
         component: MovieListComponent
-      }
+      },
+      {
+        path: 'details/:id',
+        component: MovieDetailsComponent
+      },
     ])
   ]
 })
