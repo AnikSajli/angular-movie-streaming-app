@@ -4,7 +4,12 @@ import firebase from "firebase";
 import {AngularFireDatabase} from "@angular/fire/database";
 import {MovieQueryService} from "../../../services/movie-query.service";
 import {Router} from "@angular/router";
-import {MovieDetailsModel, TopRatedMovieModel, UpcomingMovieModel} from "../../models/movie-data.model";
+import {
+  MovieDetailsModel,
+  PopularMovieModel,
+  TopRatedMovieModel,
+  UpcomingMovieModel
+} from "../../models/movie-data.model";
 
 @Component({
   selector: 'app-university-list',
@@ -12,10 +17,10 @@ import {MovieDetailsModel, TopRatedMovieModel, UpcomingMovieModel} from "../../m
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent implements OnInit {
-  popularMovielist: TopRatedMovieModel[] = []
-  latestMovielist: MovieDetailsModel[] = []
-  upcomingMovielist: UpcomingMovieModel[] = []
-  dataLoaded: boolean;
+  popularMovielist: PopularMovieModel[] = [];
+  topRatedMovielist: TopRatedMovieModel[] = [];
+  latestMovielist: MovieDetailsModel[] = [];
+  upcomingMovielist: UpcomingMovieModel[] = [];
 
   constructor( private http: HttpClient,
                private firebaseDB: AngularFireDatabase,
@@ -23,6 +28,7 @@ export class MovieListComponent implements OnInit {
                private router: Router) { }
 
   ngOnInit(): void {
+    this.getPupularMovies()
     this.getTopRatedMovies();
     this.getLatestMovies();
     this.getUpcomingMovies();
@@ -30,6 +36,12 @@ export class MovieListComponent implements OnInit {
 
   getTopRatedMovies(): void {
     this.movieQueryService.fetchTopRatedMovieList().subscribe(data => {
+      this.topRatedMovielist = data.results.splice(0,4);
+    });
+  }
+
+  getPupularMovies(): void {
+    this.movieQueryService.fetchPopularMovieList().subscribe(data => {
       this.popularMovielist = data.results.splice(0,4);
     });
   }

@@ -33,6 +33,13 @@ export interface TopRatedMovieModel {
   total_pages: number;
 }
 
+export interface PopularMovieModel {
+  page: Number;
+  results: Result[];
+  total_results: number;
+  total_pages: number;
+}
+
 export interface UpcomingMovieModel {
   page: Number;
   results: Result[];
