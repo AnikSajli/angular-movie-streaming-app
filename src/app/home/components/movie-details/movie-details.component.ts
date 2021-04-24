@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {MovieQueryService} from "../../../services/movie-query.service";
+import {MovieDetailsModel} from "../../models/movie-data.model";
 
 @Component({
   selector: 'app-movie-details',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieDetailsComponent implements OnInit {
 
-  constructor() { }
+  movieId: string;
+  movieDetails: MovieDetailsModel;
+  constructor(
+    private route: ActivatedRoute,
+    private movieQueryService: MovieQueryService) { }
 
   ngOnInit(): void {
+    // this.movieId = this.route.snapshot.params['id'];
+    this.route.params.subscribe(params => {
+      this.movieId = params['id'];
+      this.getMovieDetails();
+    })
+  }
+
+  getMovieDetails() {
+    this.movieQueryService.fetchMovieDetailsById(this.movieId).subscribe(res => {
+      this.movieDetails = res;
+      console.log(this.movieDetails);
+    });
   }
 
 }

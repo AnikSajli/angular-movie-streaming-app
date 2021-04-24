@@ -33,4 +33,9 @@ export class MovieQueryService {
     return this.http.get('https://api.themoviedb.org/3/movie/latest?' + environment.tmdbAPIkey +
       '&language=en-US&page=1', this.header)
   }
+
+  fetchMovieDetailsById(movieId: string): Observable<any> {
+    return this.http.get('https://api.themoviedb.org/3/movie/' + movieId + '?api_key=' + environment.tmdbAPIkey + '&language=en-US',
+      this.header)
+  }
 }
