@@ -13,7 +13,6 @@
     fxLayoutAlign="center center"
     style="padding-top: 80px"
     fxLayoutGap="24px">
-<!--    <button style="color: black; margin-top: 200px" (click)="populateData()">Populate data</button>-->
     <div
       class="white bold font-size-44"
       style="margin-top: 40px">
@@ -58,13 +57,13 @@
           fxLayoutAlign="space-between center"
           fxLayoutGap="20px grid"
           fxLayout="row wrap">
-          <app-university-card
+          <app-movie-card
             *ngFor="let movie of popularMovielist"
             fxFlex="50"
             fxFlex.gt-xs="25"
             fxFlex.gt-md="20"
             [movieInfo]= "movie"
-          ></app-university-card>
+          ></app-movie-card>
         </div>
 
       </div>
@@ -100,14 +99,14 @@
             fxLayoutAlign="space-between center"
             fxLayoutGap="20px grid"
             fxLayout="row wrap">
-              <app-university-card
+              <app-movie-card
                 *ngFor="let movie of latestMovielist"
                 fxFlex="50"
                 fxFlex.gt-xs="25"
                 fxFlex.gt-md="20"
                 [movieInfo]="movie"
                 (click)="navigateToMovieDetails(movie)">
-              </app-university-card>
+              </app-movie-card>
           </div>
         </div>
       </div>
@@ -142,7 +141,7 @@
             fxLayoutAlign="space-between center"
             fxLayoutGap="20px grid"
             fxLayout="row wrap">
-              <app-university-card
+              <app-movie-card
                 *ngFor="let movie of upcomingMovielist"
                 fxFlex="50"
                 fxFlex.gt-xs="25"
@@ -150,7 +149,7 @@
                 fxLayoutAlign="center center"
                 fxLayoutGap="20px"
                 [movieInfo]="movie">
-              </app-university-card>
+              </app-movie-card>
           </div>
         </div>
       </div>

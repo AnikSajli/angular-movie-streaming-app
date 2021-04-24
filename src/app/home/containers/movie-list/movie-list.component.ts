@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import firebase from "firebase";
 import {AngularFireDatabase} from "@angular/fire/database";
-import {UniversityDataService} from "../../../services/university-data.service";
 import {MovieQueryService} from "../../../services/movie-query.service";
 import {Router} from "@angular/router";
 import {MovieDetailsModel, TopRatedMovieModel, UpcomingMovieModel} from "../../models/movie-data.model";
@@ -16,10 +15,10 @@ export class MovieListComponent implements OnInit {
   popularMovielist: TopRatedMovieModel[] = []
   latestMovielist: MovieDetailsModel[] = []
   upcomingMovielist: UpcomingMovieModel[] = []
+  dataLoaded: boolean;
 
   constructor( private http: HttpClient,
                private firebaseDB: AngularFireDatabase,
-               private uniDataService: UniversityDataService,
                private movieQueryService: MovieQueryService,
                private router: Router) { }
 

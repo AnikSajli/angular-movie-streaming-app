@@ -1,8 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {UniversityDataModel} from "../../models/university-data.model";
 
 @Component({
-  selector: 'app-university-card',
+  selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
   styleUrls: ['./movie-card.component.scss']
 })
