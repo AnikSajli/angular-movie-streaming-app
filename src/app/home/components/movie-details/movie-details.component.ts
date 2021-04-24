@@ -17,7 +17,6 @@ export class MovieDetailsComponent implements OnInit {
     private movieQueryService: MovieQueryService) { }
 
   ngOnInit(): void {
-    // this.movieId = this.route.snapshot.params['id'];
     this.route.params.subscribe(params => {
       this.movieId = params['id'];
       this.getMovieDetails();
@@ -27,7 +26,6 @@ export class MovieDetailsComponent implements OnInit {
   getMovieDetails() {
     this.movieQueryService.fetchMovieDetailsById(this.movieId).subscribe(res => {
       this.movieDetails = res;
-      console.log(this.movieDetails);
     });
   }
 
