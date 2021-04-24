@@ -6,6 +6,7 @@ import {UniversityDataService} from "../../../services/university-data.service";
 import {UniversityDataModel} from "../../models/university-data.model";
 import {MovieQueryService} from "../../../services/movie-query.service";
 import {Router} from "@angular/router";
+import {MovieDetailsModel, TopRatedMovieModel, UpcomingMovieModel} from "../../models/movie-data.model";
 
 @Component({
   selector: 'app-university-list',
@@ -15,9 +16,9 @@ import {Router} from "@angular/router";
 export class MovieListComponent implements OnInit {
 
   uniList: UniversityDataModel[] = []
-  popularMovielist: UniversityDataModel[] = []
-  latestMovielist: UniversityDataModel[] = []
-  upcomingMovielist: UniversityDataModel[] = []
+  popularMovielist: TopRatedMovieModel[] = []
+  latestMovielist: MovieDetailsModel[] = []
+  upcomingMovielist: UpcomingMovieModel[] = []
 
   constructor( private http: HttpClient,
                private firebaseDB: AngularFireDatabase,
@@ -46,7 +47,6 @@ export class MovieListComponent implements OnInit {
   getTopRatedMovies(): void {
     this.movieQueryService.fetchTopRatedMovieList().subscribe(data => {
       this.popularMovielist = data.results.splice(0,4);
-      console.log(this.popularMovielist);
     });
   }
 
@@ -76,8 +76,6 @@ export class MovieListComponent implements OnInit {
   // populateData() {
   //   this.http.get('https://api.themoviedb.org/3/movie/top_rated?api_key=&language=en-US&page=1').subscribe(response => {
   //     const unis = response;
-  //     console.log(response);
-  //     debugger
   //     // this.uniList = unis;
   //     // this.uniList.forEach((uni) => {
   //     //   uni.image = ''
