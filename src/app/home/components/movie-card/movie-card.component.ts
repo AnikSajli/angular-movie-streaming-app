@@ -1,7 +1,7 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
-import {MovieQueryService} from "../../../services/movie-query.service";
 import {MovieDetailsModel, MovieGenreModel} from "../../models/movie-data.model";
 import {environment} from "../../../../environments/environment";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-movie-card',
@@ -18,7 +18,9 @@ export class MovieCardComponent implements OnInit {
   displayGenreList: string[] = [];
   imgUrl: string;
   defaultImage = "https://image.shutterstock.com/image-vector/no-user-profile-picture-hand-600w-99335579.jpg";
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
     this.imgUrl = this.getImage();
@@ -38,5 +40,9 @@ export class MovieCardComponent implements OnInit {
       })
     })
    return this.displayGenreList = this.genreNames.splice(0,2);
+  }
+
+  navigateToMovieDetails(movie: MovieDetailsModel) {
+    this.router.navigate(['details',movie.id]);
   }
 }

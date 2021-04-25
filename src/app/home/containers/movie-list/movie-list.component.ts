@@ -6,8 +6,7 @@ import {MovieQueryService} from "../../../services/movie-query.service";
 import {Router} from "@angular/router";
 import {
   MovieDetailsModel, MovieGenreModel,
-  PopularMovieModel,
-  TopRatedMovieModel,
+  MovieModel,
   UpcomingMovieModel
 } from "../../models/movie-data.model";
 
@@ -17,8 +16,8 @@ import {
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent implements OnInit {
-  popularMovielist: PopularMovieModel[] = [];
-  topRatedMovielist: TopRatedMovieModel[] = [];
+  popularMovielist: MovieModel[] = [];
+  topRatedMovielist: MovieModel[] = [];
   latestMovielist: MovieDetailsModel[] = [];
   upcomingMovielist: UpcomingMovieModel[] = [];
   movieGenres: MovieGenreModel[];
@@ -30,7 +29,7 @@ export class MovieListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovieGenres();
-    this.getPupularMovies()
+    this.getPupularMovies();
     this.getTopRatedMovies();
     this.getLatestMovies();
     this.getUpcomingMovies();
@@ -64,9 +63,5 @@ export class MovieListComponent implements OnInit {
     this.movieQueryService.fetchMovieGenres().subscribe(data => {
       this.movieGenres = data.genres;
     });
-  }
-
-  navigateToMovieDetails(movie: any) {
-    this.router.navigate(['details',movie.id]);
   }
 }

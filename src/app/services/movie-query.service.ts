@@ -19,12 +19,6 @@ export class MovieQueryService {
         environment.tmdbReadAccessToken)
   }
 
-  imageHeader = {
-    headers: new HttpHeaders({
-      'Authorization': environment.tmdbReadAccessToken
-    })
-  }
-
   fetchTopRatedMovieList(): Observable<any> {
     return this.http.get('https://api.themoviedb.org/3/movie/top_rated?api_key=' + environment.tmdbAPIkey +
     '&language=en-US&page=2')
@@ -50,12 +44,33 @@ export class MovieQueryService {
       '&language=en-US&page=1', this.header)
   }
 
-  fetchMovieImage(path: string): Observable<any> {
-    return this.http.get('https://image.tmdb.org/t/p/w200/' + path, this.imageHeader )
+  fetchMovieGenres(): Observable<any> {
+    return this.http.get('https://api.themoviedb.org/3/genre/movie/list?api_key='
+      + environment.tmdbAPIkey+ '&language=en-US',
+      this.header)
   }
 
-  fetchMovieGenres(): Observable<any> {
-    return this.http.get('https://api.themoviedb.org/3/genre/movie/list?api_key=' + environment.tmdbAPIkey+ '&language=en-US',
-      this.imageHeader)
+  fetchSimilarMovies(movieId: string): Observable<any> {
+    return this.http.get('https://api.themoviedb.org/3/movie/' + movieId + '/similar?api_key=' +
+      + environment.tmdbAPIkey+ '&language=en-US&page=1',
+      this.header)
+  }
+
+  fetchMovieTrailers(movieId: string): Observable<any> {
+    return this.http.get('https://api.themoviedb.org/3/movie/' + movieId + '/videos?api_key=' +
+      + environment.tmdbAPIkey+ '&language=en-US',
+      this.header)
+  }
+
+  fetchMovieReviews(movieId: string): Observable<any> {
+    return this.http.get('https://api.themoviedb.org/3/movie/' + movieId + '/reviews?api_key=' +
+      + environment.tmdbAPIkey+ '&language=en-US&page=1',
+      this.header)
+  }
+
+  fetchMovieCredits(movieId: string): Observable<any> {
+    return this.http.get('https://api.themoviedb.org/3/movie/' + movieId + '/reviews?api_key=' +
+      + environment.tmdbAPIkey+ '&language=en-US&page=1',
+      this.header)
   }
 }

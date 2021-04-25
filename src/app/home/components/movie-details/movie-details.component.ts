@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {MovieQueryService} from "../../../services/movie-query.service";
-import {MovieDetailsModel} from "../../models/movie-data.model";
+import {MovieDetailsModel, MovieModel, MovieReviewModel} from "../../models/movie-data.model";
 
 @Component({
   selector: 'app-movie-details',
@@ -12,6 +12,9 @@ export class MovieDetailsComponent implements OnInit {
 
   movieId: string;
   movieDetails: MovieDetailsModel;
+  similarMovieList: MovieModel;
+  movieReview: MovieReviewModel;
+
   constructor(
     private route: ActivatedRoute,
     private movieQueryService: MovieQueryService) { }
@@ -20,7 +23,17 @@ export class MovieDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.movieId = params['id'];
       this.getMovieDetails();
+      this.getSimilarMovies();
+      this.getMovieTrailer();
+      this.getMovieReviews();
     })
+  }
+
+  getSimilarMovies() {
+    this.movieQueryService.fetchSimilarMovies(this.movieId)
+      .subscribe(res => {
+       this.similarMovieList = res.results
+      });
   }
 
   getMovieDetails() {
@@ -29,4 +42,16 @@ export class MovieDetailsComponent implements OnInit {
     });
   }
 
+  getMovieTrailer(): void {
+    this.movieQueryService.fetchMovieTrailers(this.movieId)
+      .subscribe(res => {
+      })
+  }
+
+  getMovieReviews(): void {
+    this.movieQueryService.fetchMovieReviews(this.movieId)
+      .subscribe(res => {
+        this.movieReview = res;
+      })
+  }
 }
