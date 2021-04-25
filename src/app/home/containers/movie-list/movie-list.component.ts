@@ -5,7 +5,7 @@ import {AngularFireDatabase} from "@angular/fire/database";
 import {MovieQueryService} from "../../../services/movie-query.service";
 import {Router} from "@angular/router";
 import {
-  MovieDetailsModel,
+  MovieDetailsModel, MovieGenreModel,
   PopularMovieModel,
   TopRatedMovieModel,
   UpcomingMovieModel
@@ -21,6 +21,7 @@ export class MovieListComponent implements OnInit {
   topRatedMovielist: TopRatedMovieModel[] = [];
   latestMovielist: MovieDetailsModel[] = [];
   upcomingMovielist: UpcomingMovieModel[] = [];
+  movieGenres: MovieGenreModel[];
 
   constructor( private http: HttpClient,
                private firebaseDB: AngularFireDatabase,
@@ -28,6 +29,7 @@ export class MovieListComponent implements OnInit {
                private router: Router) { }
 
   ngOnInit(): void {
+    this.getMovieGenres();
     this.getPupularMovies()
     this.getTopRatedMovies();
     this.getLatestMovies();
@@ -55,6 +57,12 @@ export class MovieListComponent implements OnInit {
   getUpcomingMovies(): void {
     this.movieQueryService.fetchUpcomingMovieList().subscribe(data => {
       this.upcomingMovielist = data.results.splice(0,4);
+    });
+  }
+
+  getMovieGenres(): void {
+    this.movieQueryService.fetchMovieGenres().subscribe(data => {
+      this.movieGenres = data.genres;
     });
   }
 

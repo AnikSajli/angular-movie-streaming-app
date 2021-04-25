@@ -2,9 +2,9 @@ export interface MovieDetailsModel {
   id: number;
   adult: boolean;
   backdrop_path?: string;
-  belongs_to_collection?: any;
+  belongs_to_collection?: object;
   budget: Number;
-  genres: Genre[];
+  genres?: Genre[];
   homepage: string;
   imdb_id: string;
   original_language: string;
@@ -24,6 +24,7 @@ export interface MovieDetailsModel {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  genre_ids: number[];
 }
 
 export interface TopRatedMovieModel {
@@ -88,6 +89,11 @@ export interface production_country {
 }
 
 export interface Genre {
+  id: number;
+  name: string;
+}
+
+export interface MovieGenreModel {
   id: number;
   name: string;
 }

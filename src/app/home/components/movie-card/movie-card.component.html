@@ -1,4 +1,8 @@
-<div class="movie-card" fxLayout="column" fxLayoutAlign="start center">
+<div
+  class="movie-card"
+  fxLayout="column"
+  fxLayoutAlign="start center"
+  fxLayoutGap="4px">
   <div class="card-display" [ngStyle]="{backgroundImage: 'url('+defaultImage+')'}">
     <div
       fxLayout="column"
@@ -11,15 +15,16 @@
         fxLayoutGap="8px"
         class="bold">
         <span class="material-icons icon">star</span>
-        <div>6.6/10</div>
+        <div class="rating">{{movieInfo.vote_average}}</div>
       </div>
       <div
         fxLayout="column"
         fxLayoutAlign="center center"
         fxLayoutGap="8px"
-        class="bold white">
-        <div>Action</div>
-        <div>Sci-Fi</div>
+        class="bold white font-size-20">
+        <div *ngFor="let genreName of displayGenreList">
+          {{genreName}}
+        </div>
       </div>
       <div
         class="card-caption-button"
@@ -30,6 +35,6 @@
   </div>
 
   <div>
-    <div class="bold white height-60">{{movieInfo.title}}</div>
+    <div class="font-size-15 bold white height-60">{{movieInfo.title}}</div>
   </div>
 </div>

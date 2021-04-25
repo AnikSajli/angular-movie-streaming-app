@@ -63,6 +63,7 @@
             fxFlex.gt-xs="25"
             fxFlex.gt-md="20"
             [movieInfo]= "movie"
+            [totalMovieGenreList]="movieGenres"
           ></app-movie-card>
         </div>
 
@@ -83,7 +84,7 @@
             fxLayoutAlign.gt-xs="space-between center"
             ngClass.gt-xs="width-75 mr-20">
             <div class="white">
-              Popular YIFY Movies Torrents
+              Top Rated Movies Torrents
             </div>
             <div class="bold gray font-size-14">
               Browse All
@@ -105,6 +106,7 @@
                 fxFlex.gt-xs="25"
                 fxFlex.gt-md="20"
                 [movieInfo]="movie"
+                [totalMovieGenreList]="movieGenres"
                 (click)="navigateToMovieDetails(movie)">
               </app-movie-card>
           </div>
@@ -148,7 +150,8 @@
                 fxFlex.gt-md="20"
                 fxLayoutAlign="center center"
                 fxLayoutGap="20px"
-                [movieInfo]="movie">
+                [movieInfo]="movie"
+                [totalMovieGenreList]="movieGenres">
               </app-movie-card>
           </div>
         </div>
