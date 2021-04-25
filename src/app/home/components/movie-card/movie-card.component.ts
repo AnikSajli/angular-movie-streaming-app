@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {MovieQueryService} from "../../../services/movie-query.service";
 import {MovieDetailsModel, MovieGenreModel} from "../../models/movie-data.model";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-movie-card',
@@ -15,24 +16,20 @@ export class MovieCardComponent implements OnInit {
   totalMovieGenreList: MovieGenreModel[]
   genreNames: string[] = [];
   displayGenreList: string[] = [];
+  imgUrl: string;
   defaultImage = "https://image.shutterstock.com/image-vector/no-user-profile-picture-hand-600w-99335579.jpg";
-  constructor(private movieQueryService: MovieQueryService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    //this.getImage();
-    console.log(this.movieInfo);
-    console.log(this.totalMovieGenreList);
-    this.getMovieGenreNames();
+    this.imgUrl = this.getImage();
+    this.genreNames = this.getMovieGenreNames();
   }
 
-  getImage(): void {
-    this.movieQueryService.fetchMovieImage(this.movieInfo.poster_path)
-      .subscribe(res => {
-        console.log(res)
-      });
+  getImage(): string {
+    return this.imgUrl = environment.imageBaseUrl + this.movieInfo.poster_path;
   }
 
-  getMovieGenreNames(): void {
+  getMovieGenreNames(): string[] {
     this.totalMovieGenreList.forEach(genre => {
       this.movieInfo.genre_ids.forEach(movieGenreId => {
         if (genre.id === movieGenreId) {
@@ -40,6 +37,6 @@ export class MovieCardComponent implements OnInit {
         }
       })
     })
-   this.displayGenreList = this.genreNames.splice(0,2);
+   return this.displayGenreList = this.genreNames.splice(0,2);
   }
 }

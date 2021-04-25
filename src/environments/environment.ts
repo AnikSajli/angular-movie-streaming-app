@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   firebaseAPIKey: 'AIzaSyCTFjv4D0__00P4gHTdv2crBV7A8vQUjbY',
-  tmdbAPIkey: '069ca8fd3e5555496a3045ec76dd7422'
+  tmdbAPIkey: '069ca8fd3e5555496a3045ec76dd7422',
+  tmdbReadAccessToken: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNjljYThmZDNlNTU1NTQ5NmEzMDQ1ZWM3NmRkNzQyMiIsInN1YiI6IjYwN2ZhNmIzMTYwZTczMDA0MGRmZmZiMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.u3DNbbE-o0sfQZRAonV9WCWdpGn2mdjvJ2PWbQQ7YQI',
+  imageBaseUrl: 'https://image.tmdb.org/t/p/w200/',
 };
 
 export const firebaseConfig = {

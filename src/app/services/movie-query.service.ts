@@ -16,12 +16,12 @@ export class MovieQueryService {
    header = {
     headers: new HttpHeaders()
       .set('Authorization',
-        `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNjljYThmZDNlNTU1NTQ5NmEzMDQ1ZWM3NmRkNzQyMiIsInN1YiI6IjYwN2ZhNmIzMTYwZTczMDA0MGRmZmZiMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.u3DNbbE-o0sfQZRAonV9WCWdpGn2mdjvJ2PWbQQ7YQI`)
+        environment.tmdbReadAccessToken)
   }
 
   imageHeader = {
     headers: new HttpHeaders({
-      'Accept-Encoding': 'gzip, deflate, br',
+      'Authorization': environment.tmdbReadAccessToken
     })
   }
 
@@ -56,6 +56,6 @@ export class MovieQueryService {
 
   fetchMovieGenres(): Observable<any> {
     return this.http.get('https://api.themoviedb.org/3/genre/movie/list?api_key=' + environment.tmdbAPIkey+ '&language=en-US',
-      this.header)
+      this.imageHeader)
   }
 }
