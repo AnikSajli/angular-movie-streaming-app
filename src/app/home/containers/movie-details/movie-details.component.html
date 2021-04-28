@@ -1,0 +1,143 @@
+<div
+  fxLayoutAlign="center"
+  class="bg-color">
+
+  <div
+    fxFlex="90"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="16px"
+    class="pt-60"
+    ngClass.gt-xs="pt-100">
+    <div
+      fxShow
+      fxShow.gt-xs="false"
+      fxLayout="column wrap"
+      fxLayoutGap="8px">
+      <div
+        class="white bold font-size-20">
+        {{movieDetails?.title}}
+      </div>
+      <div class="white bold font-size-15">
+        {{movieDetails?.release_date}}
+      </div>
+      <div class="white bold font-size-15">
+       <span *ngFor="let genre of movieDetails?.genres; let i = index"> {{genre?.name}}
+         <span *ngIf="!(i === (movieDetails?.genres?.length - 1))">/</span>
+       </span>
+      </div>
+    </div>
+
+    <div
+      fxLayout="row"
+      fxLayoutGap="40px"
+      class="width-100"
+      fxLayoutAlign="center start">
+      <div
+        fxLayout="column">
+        <div
+          class="movie-img-small"
+          ngClass.gt-xs="movie-img-medium"
+          ngClass.gt-sm="movie-img-large"
+          [ngStyle]="{backgroundImage: 'url('+ imgUrl +')'}">
+        </div>
+
+        <button
+          fxShow="false"
+          fxShow.gt-sm
+          class="download-btn"
+          fxLayoutAlign="center center">
+          <span
+            class="material-icons-outlined pr-4"><mat-icon>file_download</mat-icon></span>
+          Download
+        </button>
+      </div>
+
+      <div
+        fxLayout="column"
+        fxLayoutGap="20px">
+        <div
+          fxHide
+          fxHide.gt-xs="false"
+          fxLayout="column wrap"
+          fxLayoutGap="8px">
+          <div class="white bold font-size-24"
+               ngClass.gt-sm="font-size-36">
+            {{movieDetails?.title}}
+          </div>
+          <div
+            class="white bold font-size-17"
+            ngClass.gt-sm="font-size-19"
+            ngStyle.gt-sm="padding-top: 24px">
+            {{movieDetails?.release_date}}
+          </div>
+          <div
+            class="white bold font-size-17"
+            ngClass.gt-sm="font-size-19">
+             <span *ngFor="let genre of movieDetails?.genres; let i = index"> {{genre?.name}}
+               <span *ngIf="!(i === (movieDetails?.genres?.length - 1))">/</span>
+             </span>
+          </div>
+        </div>
+
+        <!--        <div class="white">-->
+        <!--          <span>Available in:</span>-->
+        <!--          <span>720p.WEB</span>-->
+        <!--          <span>1080p.WEB</span>-->
+        <!--        </div>-->
+
+        <div
+          fxLayout="column"
+          fxLayoutGap="4px">
+          <div
+            fxLayoutAlign="start center">
+            <span
+              class="min-width-60">
+              <mat-icon class="color-green">favorite</mat-icon>
+            </span>
+            <span
+              class="white bold font-size-15"
+              ngClass.gt-xs="font-size-17">330</span>
+          </div>
+          <div
+            fxLayoutAlign="start center">
+            <span class="min-width-60">
+              <img class="mr-24" src="../../../../assets/images/rt-rotten.png">
+            </span>
+            <span
+              class="white bold font-size-15"
+              ngClass.gt-xs="font-size-17">56%</span>
+          </div>
+          <div
+            fxLayoutAlign="start center">
+            <span
+              class="min-width-60">
+              <img class="pl-4" src="../../../../assets/images/rt-upright.png">
+            </span>
+            <span class="white bold font-size-15"
+                  ngClass.gt-xs="font-size-17">
+              {{movieDetails?.vote_average}}
+            </span>
+          </div>
+          <div
+            fxLayoutAlign="start center">
+            <span
+              class="min-width-60">
+              <img src="../../../../assets/images/logo-imdb.svg">
+            </span>
+            <span class="white bold font-size-15"
+                  ngClass.gt-xs="font-size-17">
+              {{movieDetails?.vote_average}}
+            </span>
+          </div>
+        </div>
+      </div>
+      <app-similar-movies
+        fxShow="false"
+        fxShow.gt-sm="true"
+        [similarMoviesImgURLs]="similarMovieImgURLs"></app-similar-movies>
+
+    </div>
+  </div>
+
+</div>

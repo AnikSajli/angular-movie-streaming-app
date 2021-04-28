@@ -43,8 +43,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-size: 15px;
 }
 
+.font-size-16 {
+  font-size: 15px;
+}
+
+.font-size-17 {
+  font-size: 17px;
+}
+
 .font-size-18 {
   font-size: 18px;
+}
+
+.font-size-19 {
+  font-size: 19px;
 }
 
 .font-size-20 {
@@ -61,6 +73,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .font-size-32 {
   font-size: 32px;
+}
+
+.font-size-36 {
+  font-size: 36px;
 }
 
 .width-75 {
@@ -91,8 +107,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   padding-left: 4px;
 }
 
+.pr-4 {
+  padding-right: 4px;
+}
+
 .pl-8 {
   padding-left: 8px;
+}
+
+.pt-60 {
+  padding-top: 60px;
 }
 
 .min-width-60 {

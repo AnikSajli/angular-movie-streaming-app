@@ -1,0 +1,46 @@
+.bg-color {
+  background-color: #1d1d1d;
+}
+
+.pt-100 {
+  padding-top: 100px;
+}
+
+.movie-img-small {
+  width: 85px;
+  height: 135px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 5px solid #fff;
+  border-radius: 5px;
+}
+
+.movie-img-medium {
+  width: 180px;
+  height: 280px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 5px solid #fff;
+  border-radius: 5px;
+}
+
+.movie-img-large {
+  width: 250px;
+  height: 390px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 5px solid #fff;
+  border-radius: 5px;
+}
+
+.download-btn {
+  width: 260px;
+  height: 40px;
+  background: #6ac045;
+  font-weight: bold;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 5px;
+  margin-top: 8px;
+}
+

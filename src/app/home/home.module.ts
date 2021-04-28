@@ -6,7 +6,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDialogModule} from "@angular/material/dialog";
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
-import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { MovieDetailsComponent } from './containers/movie-details/movie-details.component';
+import { SimilarMoviesComponent } from './components/similar-movies/similar-movies.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
     MovieListComponent,
     MovieCardComponent,
     MovieDetailsComponent,
+    SimilarMoviesComponent,
   ],
   exports: [
     MovieListComponent
