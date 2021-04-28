@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {MovieQueryService} from "../../../services/movie-query.service";
 import {MovieDetailsModel, MovieModel, MovieReviewModel} from "../../models/movie-data.model";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-movie-details',
@@ -12,8 +13,10 @@ export class MovieDetailsComponent implements OnInit {
 
   movieId: string;
   movieDetails: MovieDetailsModel;
-  similarMovieList: MovieModel;
+  similarMovieList: any[];
+  similarMovieImgURLs: string[] = [];
   movieReview: MovieReviewModel;
+  imgUrl: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,13 +35,18 @@ export class MovieDetailsComponent implements OnInit {
   getSimilarMovies() {
     this.movieQueryService.fetchSimilarMovies(this.movieId)
       .subscribe(res => {
-       this.similarMovieList = res.results
+       this.similarMovieList = res?.results.splice(0,4)
+        this.similarMovieList.forEach(movie => {
+          console.log(movie.poster_path)
+          this.similarMovieImgURLs.push(this.getImage(movie.poster_path));
+        })
       });
   }
 
   getMovieDetails() {
     this.movieQueryService.fetchMovieDetailsById(this.movieId).subscribe(res => {
       this.movieDetails = res;
+      this.imgUrl = this.getImage(this.movieDetails.poster_path);
     });
   }
 
@@ -53,5 +61,9 @@ export class MovieDetailsComponent implements OnInit {
       .subscribe(res => {
         this.movieReview = res;
       })
+  }
+
+  getImage(posterPath: string): string {
+    return this.imgUrl = environment.imageBaseUrl + posterPath;
   }
 }
