@@ -95,6 +95,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 100%;
 }
 
+.mt-4 {
+  margin-top: 4px;
+}
+
 .mr-4 {
   margin-right: 4px;
 }
@@ -135,6 +139,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   padding-top: 60px;
 }
 
+.pt-16 {
+  padding-top: 16px;
+}
+
+.pb-4 {
+  padding-bottom: 4px;
+}
+
+.pb-8 {
+  padding-bottom: 8px;
+}
+
+.pb-12 {
+  padding-bottom: 12px;
+}
+
 .min-width-60 {
   min-width: 60px;
 }
@@ -154,4 +174,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .width-90 {
   width: 90%;
+}
+
+.color-deep-gray {
+  color: #717171;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

@@ -9,6 +9,9 @@ import { MovieCardComponent } from './components/movie-card/movie-card.component
 import { MovieDetailsComponent } from './containers/movie-details/movie-details.component';
 import { SimilarMoviesComponent } from './components/similar-movies/similar-movies.component';
 import { MoviePrintQualityComponent } from './components/movie-print-quality/movie-print-quality.component';
+import { MovieReviewsComponent } from './components/movie-reviews/movie-reviews.component';
+import {MatDividerModule} from '@angular/material/divider';
+import { ReviewContentComponent } from './components/review-content/review-content.component';
 
 
 @NgModule({
@@ -18,6 +21,8 @@ import { MoviePrintQualityComponent } from './components/movie-print-quality/mov
     MovieDetailsComponent,
     SimilarMoviesComponent,
     MoviePrintQualityComponent,
+    MovieReviewsComponent,
+    ReviewContentComponent,
   ],
   exports: [
     MovieListComponent
@@ -27,6 +32,7 @@ import { MoviePrintQualityComponent } from './components/movie-print-quality/mov
     FlexLayoutModule,
     MatIconModule,
     MatDialogModule,
+    MatDividerModule,
     RouterModule.forChild([
       {
         path: '',

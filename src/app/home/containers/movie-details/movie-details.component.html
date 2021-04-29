@@ -55,8 +55,8 @@
         <div
           fxLayout="row"
           fxLayoutAlign="center">
-            <img class="social-media-logo" src="../../../../assets/images/twitter.png">
-            <img class="social-media-logo" src="../../../../assets/images/pinterest.png">
+          <img class="social-media-logo" src="../../../../assets/images/twitter.png">
+          <img class="social-media-logo" src="../../../../assets/images/pinterest.png">
         </div>
       </div>
 
@@ -143,7 +143,10 @@
 
   <div class="width-90">
     <h2 class="white">Overview</h2>
-    <p class="gray">{{movieDetails.overview}}</p>
+    <p class="gray font-size-16">{{movieDetails.overview}}</p>
   </div>
+  <app-movie-reviews
+    class="width-90"
+    [movieReviews]="movieReview.results"></app-movie-reviews>
 
 </div>

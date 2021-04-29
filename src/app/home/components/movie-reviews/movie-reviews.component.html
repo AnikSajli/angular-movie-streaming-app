@@ -1,0 +1,17 @@
+<div
+  class="width-90">
+  <div fxLayout="row"
+       fxLayoutGap="4px">
+    <mat-icon class="color-green mt-4">star</mat-icon>
+    <h2 class="white">Movie Reviews</h2>
+  </div>
+
+  <div *ngFor="let review of movieReviews; let i = index"
+        fxLayout="column"
+        fxLayoutGap="28px">
+    <app-review-content [review]="review"></app-review-content>
+    <mat-divider
+      *ngIf="i !== movieReviews?.length-1"
+      class="pb-12"></mat-divider>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="pb-12">
+  <span class="color-deep-gray">Reviewed by </span>
+  <span class="gray pr-4">{{review?.author_details?.username}}</span>
+  <!--      <span><mat-icon class="color-green font-size-17 mt-4">star</mat-icon></span>-->
+</div>
+
+<div class="gray"
+     [ngClass]="{'limitTextHeight': isReadMore}">
+  {{review?.content}}
+</div>
+
+<p id="readMore"
+   class="font-size-14 gray cursor-pointer pt-16"
+   (click)="showText()"> {{ isReadMore ? 'Read More': 'Read Less' }}
+</p>
