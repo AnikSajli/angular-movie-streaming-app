@@ -1,13 +1,13 @@
 <div
-  fxLayoutAlign="center"
-  class="bg-color">
+  fxLayoutAlign="center center"
+  class="bg-color"
+  fxLayout="column">
 
   <div
-    fxFlex="90"
     fxLayout="column"
     fxLayoutAlign="center center"
     fxLayoutGap="16px"
-    class="pt-60"
+    class="pt-60 width-90"
     ngClass.gt-xs="pt-100">
     <div
       fxShow
@@ -86,7 +86,7 @@
              </span>
           </div>
         </div>
-        <app-movie-print-quality></app-movie-print-quality>
+
         <div
           fxLayout="column"
           fxLayoutGap="4px">
@@ -132,12 +132,18 @@
             </span>
           </div>
         </div>
+        <app-movie-print-quality></app-movie-print-quality>
       </div>
       <app-similar-movies
         fxShow="false"
         fxShow.gt-sm="true"
         [similarMoviesImgURLs]="similarMovieImgURLs"></app-similar-movies>
     </div>
+  </div>
+
+  <div class="width-90">
+    <h2 class="white">Overview</h2>
+    <p class="gray">{{movieDetails.overview}}</p>
   </div>
 
 </div>
