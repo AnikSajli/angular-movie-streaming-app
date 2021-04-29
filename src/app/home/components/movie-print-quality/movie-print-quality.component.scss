@@ -1,0 +1,24 @@
+.movie-print {
+  background: rgba(27,27,35,.4);
+  padding: 5px 12px;
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,.16);
+  color: #fff;
+  transition: color .15s ease-in-out;
+  width: 136px;
+  height: 32px;
+}
+
+.gray {
+  color: #9C969C;
+}
+
+.green {
+  color: #CBE8BF;
+}
+
+.subtitle-container {
+  width: 172px;
+  max-height: 32px;
+}
+

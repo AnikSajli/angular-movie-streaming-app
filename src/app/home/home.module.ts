@@ -8,6 +8,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { MovieDetailsComponent } from './containers/movie-details/movie-details.component';
 import { SimilarMoviesComponent } from './components/similar-movies/similar-movies.component';
+import { MoviePrintQualityComponent } from './components/movie-print-quality/movie-print-quality.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { SimilarMoviesComponent } from './components/similar-movies/similar-movi
     MovieCardComponent,
     MovieDetailsComponent,
     SimilarMoviesComponent,
+    MoviePrintQualityComponent,
   ],
   exports: [
     MovieListComponent
