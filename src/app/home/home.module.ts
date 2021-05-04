@@ -12,6 +12,8 @@ import { MoviePrintQualityComponent } from './components/movie-print-quality/mov
 import { MovieReviewsComponent } from './components/movie-reviews/movie-reviews.component';
 import {MatDividerModule} from '@angular/material/divider';
 import { ReviewContentComponent } from './components/review-content/review-content.component';
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import { MovieCastsComponent } from './components/movie-casts/movie-casts.component';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { ReviewContentComponent } from './components/review-content/review-conte
     MoviePrintQualityComponent,
     MovieReviewsComponent,
     ReviewContentComponent,
+    MovieCastsComponent,
   ],
   exports: [
     MovieListComponent
@@ -33,6 +36,7 @@ import { ReviewContentComponent } from './components/review-content/review-conte
     MatIconModule,
     MatDialogModule,
     MatDividerModule,
+    InfiniteScrollModule,
     RouterModule.forChild([
       {
         path: '',

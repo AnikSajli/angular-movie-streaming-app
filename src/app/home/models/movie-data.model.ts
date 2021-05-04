@@ -115,3 +115,18 @@ export interface AuthorDetails {
   avatar_path?: string;
   rating?: number;
 }
+
+export interface MovieCast {
+  adult: boolean;
+  gender?: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: string;
+  profile_path?: string;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  order: number;
+}

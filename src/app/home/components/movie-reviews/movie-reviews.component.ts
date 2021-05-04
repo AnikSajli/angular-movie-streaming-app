@@ -9,10 +9,20 @@ export class MovieReviewsComponent implements OnInit {
 
   @Input()
   movieReviews: any[];
+  // throttle = 300;
+  // scrollDistance = 1;
+  // scrollUpDistance = 2;
   constructor() { }
 
   ngOnInit(): void {
   }
 
 
+  onScrollDown() {
+    console.log("scrolled down")
+  }
+
+  onUp() {
+    console.log("scrolled up")
+  }
 }

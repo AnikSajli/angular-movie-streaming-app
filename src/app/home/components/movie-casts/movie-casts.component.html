@@ -1,0 +1,15 @@
+<div class="white">
+  <h2>Cast</h2>
+</div>
+<div *ngFor="let cast of castInfoList"
+     fxLayout="row"
+     fxLayoutGap="12px"
+     class="pb-12">
+  <img class="cast-img" [src]="cast.image">
+  <div class="gray"
+       fxLayoutAlign="center center">
+    {{cast.name}}
+    <span class="white"> as {{cast.character}}</span>
+  </div>
+  <mat-divider></mat-divider>
+</div>
