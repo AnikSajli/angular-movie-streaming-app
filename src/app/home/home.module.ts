@@ -14,6 +14,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { ReviewContentComponent } from './components/review-content/review-content.component';
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import { MovieCastsComponent } from './components/movie-casts/movie-casts.component';
+import {MovieDetailsResolver} from "./resolvers/movie-details.resolver";
 
 
 @NgModule({
@@ -42,9 +43,14 @@ import { MovieCastsComponent } from './components/movie-casts/movie-casts.compon
         path: '',
         component: MovieListComponent
       },
+      // {
+      //   path: 'details/:id',
+      //   component: MovieDetailsComponent
+      // },
       {
         path: 'details/:id',
-        component: MovieDetailsComponent
+        component: MovieDetailsComponent,
+        resolve: { movieDetails: MovieDetailsResolver }
       },
     ])
   ]

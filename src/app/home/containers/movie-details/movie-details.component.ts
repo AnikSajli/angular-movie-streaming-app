@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
 import {MovieQueryService} from "../../../services/movie-query.service";
 import {MovieCast, MovieDetailsModel, MovieModel, MovieReviewModel} from "../../models/movie-data.model";
 import {environment} from "../../../../environments/environment";
@@ -19,19 +19,31 @@ export class MovieDetailsComponent implements OnInit {
   imgUrl: string;
   movieCasts: MovieCast[];
   isLoaded: boolean;
+  arSnapshot: ActivatedRouteSnapshot;
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private route: ActivatedRoute,
-    private movieQueryService: MovieQueryService) { }
+    private movieQueryService: MovieQueryService) {
+    this.arSnapshot = activatedRoute.snapshot;
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.movieId = params['id'];
-      this.getMovieDetails();
+      // this.getMovieDetails();
+      this.getMovieDetailsFromResolver();
       this.getSimilarMovies();
       this.getMovieTrailer();
       this.getMovieCredits();
       this.getMovieReviews();
+    })
+  }
+
+  getMovieDetailsFromResolver(): void {
+    this.activatedRoute.data.subscribe(data => {
+      this.movieDetails = data.movieDetails;
+      debugger
     })
   }
 
