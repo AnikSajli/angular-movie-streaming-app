@@ -143,12 +143,17 @@
   </div>
 
   <div
-    class="width-90">
+    class="width-90"
+    fxLayout="column"
+    fxLayout.gt-xs="row"
+    fxLayoutGap.gt-xs="40px">
     <div class="width-90">
       <h2 class="white">Overview</h2>
       <p class="gray font-size-16">{{movieDetails?.overview}}</p>
     </div>
-    <app-movie-casts [cast]="movieCasts"></app-movie-casts>
+    <app-movie-casts
+      fxFlex="40"
+      [cast]="movieCasts"></app-movie-casts>
   </div>
 
   <app-movie-reviews
